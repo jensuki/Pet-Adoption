@@ -1,0 +1,19 @@
+<!-- templates/pet_details.html -->
+{% extends 'base.html' %}
+
+{% block title %}Pet Details{% endblock %}
+
+{% block content %}
+
+<h1>{{ pet.name }}</h1>
+
+<img class="img-thumbnail" src="{{ pet.photo_url or default_pet_image}}" alt="{{ pet.species }}" style="width:100px">
+
+<p>Species: {{ pet.species }}</p>
+<p>Age: {{ pet.age }}</p>
+<p>Notes: {{ pet.notes }}</p>
+
+<a href="/{{ pet.id }}/edit" class="btn btn-primary">Edit Pet</a>
+<a href="/" class="btn btn-secondary">Back Home</a>
+
+{% endblock %}

@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block title %}Edit Pet{% endblock %}
+
+{% block content %}
+
+<h1>Edit {{ pet.name }}</h1>
+
+<form method="POST">
+    {{ form.hidden_tag() }} <!-- CSRF Token -->
+
+    <div class="form-group">
+        {{ form.photo_url.label(class_="form-label") }}
+        {{ form.photo_url(class_="form-control") }}
+        {% if form.photo_url.errors %}
+        <div class="text-danger">
+            {% for error in form.photo_url.errors %}
+            {{ error }}
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+
+    <div class="form-group">
+        {{ form.age.label(class_="form-label") }}
+        {{ form.age(class_="form-control") }}
+        {% if form.age.errors %}
+        <div class="text-danger">
+            {% for error in form.age.errors %}
+            {{ error }}
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+
+    <div class="form-group">
+        {{ form.notes.label(class_="form-label") }}
+        {{ form.notes(class_="form-control") }}
+    </div>
+
+    <div class="form-group">
+        {{ form.available.label(class_="form-label") }}
+        {{ form.available() }}
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save</button>
+    <a href="/" class="btn btn-secondary">Back Home</a>
+</form>
+
+{% endblock %}

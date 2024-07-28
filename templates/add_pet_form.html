@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}Add Pet Form{% endblock %}
+
+{% block content %}
+
+<h1>Add a Pet</h1>
+
+<form method="POST">
+    {{ form.hidden_tag() }} <!--CSRF Token-->
+
+    {% for field in form if field.widget.input_type != 'hidden' %}
+
+    <div class="form-group">
+        {{ field.label(class_="form-label") }}
+        {{ field(class_="form-control") }}
+
+        {% if field.errors %}
+        <span class="text-danger">
+            {% for err in field.errors %}
+            {{ err }}
+            {% endfor %}
+        </span>
+        {% endif %}
+    </div>
+
+    {% endfor %}
+
+    <button type="submit" class="btn btn-primary">Add Pet</button>
+    <a href="/" class="btn btn-secondary">Back Home</a>
+</form>
+
+
+
+{% endblock %}
